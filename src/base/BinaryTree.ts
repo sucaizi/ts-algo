@@ -126,10 +126,30 @@ export class BinaryTree {
     }
 
     /**
-     * 
+     * remove
      */
-    public remove() {
+    public remove(data: any) {
 
+        let node: Node | null = this.find(data)
+        if(node === null) return 
+
+        if(node.left === null && node.right === null) {
+            node = null
+            return 
+        }
+
+        if(node.right === null || node.left === null) {
+            node = node.left || node.right
+            return 
+        } 
+
+        if(node.right != null && node.left != null) {
+            let currentNode: Node | null = node
+            while(currentNode && currentNode.left != null) {
+                currentNode = currentNode.left
+            }
+            node.data = currentNode.data
+        }
     }
 
     /**
@@ -199,6 +219,18 @@ export class BinaryTree {
             }
             return currentNode.data
         }
+    }
+
+    /**
+     * maxDepth
+     */
+    public maxDepth(): number {
+        let depth = (node: Node |null): number => {
+            if(node === null) return 0
+            return Math.max(depth(node.left), depth(node.right)) + 1
+        }
+
+        return depth(this.root)
     }
 
     public show(): Node | null {
