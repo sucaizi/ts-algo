@@ -1,3 +1,4 @@
+
 // input [8,3,6,4,9,11,2,5,7];
 // output
 // let tree = {
@@ -56,8 +57,17 @@ export class BinaryTree {
 
     private root: Node | null = null
 
-    constructor() {
+    constructor(tree: Array < number > | number) {
 
+        if (Array.isArray(tree)) {
+            for (let i = 0, len = tree.length; i < len;) {
+                this.insert(tree[i]);
+            }
+        } else if (typeof tree === 'number') {
+            this.insert(tree)
+        } else {
+            console.error('请输入Number类型或者Array类型的参数')
+        }
     }
 
     /**
@@ -131,21 +141,21 @@ export class BinaryTree {
     public remove(data: any) {
 
         let node: Node | null = this.find(data)
-        if(node === null) return 
+        if (node === null) return
 
-        if(node.left === null && node.right === null) {
+        if (node.left === null && node.right === null) {
             node = null
-            return 
+            return
         }
 
-        if(node.right === null || node.left === null) {
+        if (node.right === null || node.left === null) {
             node = node.left || node.right
-            return 
-        } 
+            return
+        }
 
-        if(node.right != null && node.left != null) {
+        if (node.right != null && node.left != null) {
             let currentNode: Node | null = node
-            while(currentNode && currentNode.left != null) {
+            while (currentNode && currentNode.left != null) {
                 currentNode = currentNode.left
             }
             node.data = currentNode.data
@@ -225,8 +235,8 @@ export class BinaryTree {
      * maxDepth
      */
     public maxDepth(): number {
-        let depth = (node: Node |null): number => {
-            if(node === null) return 0
+        let depth = (node: Node | null): number => {
+            if (node === null) return 0
             return Math.max(depth(node.left), depth(node.right)) + 1
         }
 
