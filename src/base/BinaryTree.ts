@@ -1,45 +1,4 @@
 
-// input [8,3,6,4,9,11,2,5,7];
-// output
-// let tree = {
-//     key: 8,
-//     left: {
-//         key: 3,
-//         left: {
-//             key: 2,
-//             left: null,
-//             right: null
-//         },
-//         right: {
-//             key: 6,
-//             left: {
-//                 key: 4,
-//                 left: null,
-//                 right: {
-//                     key: 5,
-//                     left: null,
-//                     right: null
-//                 }
-//             },
-//             right: {
-//                 key: 7,
-//                 left: null,
-//                 right: null
-//             }
-//         }
-//     }
-//     right: {
-//         key: 9,
-//         left: null,
-//         right: {
-//             key: 11,
-//             left: null,
-//             right: null
-//         }
-//     }
-// }
-
-
 export class Node {
 
     data: any
@@ -60,7 +19,7 @@ export class BinaryTree {
     constructor(tree: Array < number > | number) {
 
         if (Array.isArray(tree)) {
-            for (let i = 0, len = tree.length; i < len;) {
+            for (let i = 0, len = tree.length; i < len;i++) {
                 this.insert(tree[i]);
             }
         } else if (typeof tree === 'number') {
@@ -76,15 +35,12 @@ export class BinaryTree {
      */
     public insert(data: any): void {
 
-
         let newNode = new Node(data)
-        console.log(this.root)
-
         if (this.root === null) {
             this.root = newNode
         } else {
             let currentNode = this.root
-            while (true) {
+            while (currentNode != null) {
                 if (data < currentNode.data) {
                     if (currentNode.left === null) {
                         currentNode.left = newNode
@@ -172,7 +128,7 @@ export class BinaryTree {
         let inOrderTraverseNode = (node: any | null, visitedFn: (data: any) => any) => {
             if (node !== null) {
                 inOrderTraverseNode(node.left, visitedFn);
-                visitedFn(node.key);
+                visitedFn(node.data);
                 inOrderTraverseNode(node.right, visitedFn);
             }
         }
@@ -185,7 +141,7 @@ export class BinaryTree {
     public preOrderTraverse(visitedFn: (data: any) => any) {
         let preOrderTraverseNode = (node: any | null, visitedFn: (data: any) => any) => {
             if (node !== null) {
-                visitedFn(node.key);
+                visitedFn(node.data);
                 preOrderTraverseNode(node.left, visitedFn);
                 preOrderTraverseNode(node.right, visitedFn);
             }
@@ -201,7 +157,7 @@ export class BinaryTree {
             if (node !== null) {
                 postOrderTraverseNode(node.left, visitedFn);
                 postOrderTraverseNode(node.right, visitedFn);
-                visitedFn(node.key);
+                visitedFn(node.data);
             }
         }
         postOrderTraverseNode(this.root, visitedFn)
@@ -254,4 +210,23 @@ export class BinaryTree {
 let data = [8, 3, 6, 4, 9, 11, 2, 5, 7];
 let bitree = new BinaryTree(data);
 var root = bitree.show()
-console.log(root)
+console.log(JSON.stringify(root))
+console.log('inorder...');
+var result = new Array<number>();
+console.log('inorder...');
+bitree.inOrderTraverse((data)=> {
+    result.push(data);
+})
+console.log(result);
+console.log('preorder...');
+result = []
+bitree.preOrderTraverse((data)=> {
+    result.push(data);
+})
+console.log(result);
+result = []
+console.log('postorder...');
+bitree.postOrderTraverse((data)=> {
+    result.push(data);
+})
+console.log(result);

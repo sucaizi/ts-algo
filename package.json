@@ -23,6 +23,9 @@
     "homepage": "https://github.com/sucaizi/ts-algo#readme",
 
     "jest": {
+        "roots": [
+          "<rootDir>/src"
+        ],
         "transform": {
             ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
           },
