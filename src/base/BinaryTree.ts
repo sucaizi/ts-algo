@@ -76,7 +76,9 @@ export class BinaryTree {
      */
     public insert(data: any): void {
 
+
         let newNode = new Node(data)
+        console.log(this.root)
 
         if (this.root === null) {
             this.root = newNode
@@ -248,3 +250,8 @@ export class BinaryTree {
     }
 
 }
+
+let data = [8, 3, 6, 4, 9, 11, 2, 5, 7];
+let bitree = new BinaryTree(data);
+var root = bitree.show()
+console.log(root)
