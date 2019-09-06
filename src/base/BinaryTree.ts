@@ -1,4 +1,3 @@
-
 export class Node {
 
     data: any
@@ -19,7 +18,7 @@ export class BinaryTree {
     constructor(tree: Array < number > | number) {
 
         if (Array.isArray(tree)) {
-            for (let i = 0, len = tree.length; i < len;i++) {
+            for (let i = 0, len = tree.length; i < len; i++) {
                 this.insert(tree[i]);
             }
         } else if (typeof tree === 'number') {
@@ -212,21 +211,21 @@ let bitree = new BinaryTree(data);
 var root = bitree.show()
 console.log(JSON.stringify(root))
 console.log('inorder...');
-var result = new Array<number>();
+var result = new Array < number > ();
 console.log('inorder...');
-bitree.inOrderTraverse((data)=> {
+bitree.inOrderTraverse((data) => {
     result.push(data);
 })
 console.log(result);
 console.log('preorder...');
 result = []
-bitree.preOrderTraverse((data)=> {
+bitree.preOrderTraverse((data) => {
     result.push(data);
 })
 console.log(result);
 result = []
 console.log('postorder...');
-bitree.postOrderTraverse((data)=> {
+bitree.postOrderTraverse((data) => {
     result.push(data);
 })
 console.log(result);

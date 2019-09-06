@@ -4,8 +4,8 @@
     "description": "typescript algorithem library",
     "main": "index.js",
     "scripts": {
-        "test": "jest",
-        "commit": "git-cz"
+        "build": "tsc --module commonjs",
+        "test": "jest"
     },
     "repository": {
         "type": "git",
@@ -21,47 +21,43 @@
         "url": "https://github.com/sucaizi/ts-algo/issues"
     },
     "homepage": "https://github.com/sucaizi/ts-algo#readme",
-
     "jest": {
         "roots": [
-          "<rootDir>/src"
+            "<rootDir>/src"
         ],
         "transform": {
             ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
-          },
-          "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
-          "moduleFileExtensions": [
+        },
+        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+        "moduleFileExtensions": [
             "ts",
             "tsx",
             "js"
-          ],
-          "coveragePathIgnorePatterns": [
+        ],
+        "coveragePathIgnorePatterns": [
             "/node_modules/",
             "/test/"
-          ],
-          "coverageThreshold": {
+        ],
+        "coverageThreshold": {
             "global": {
-              "branches": 90,
-              "functions": 95,
-              "lines": 95,
-              "statements": 95
+                "branches": 90,
+                "functions": 95,
+                "lines": 95,
+                "statements": 95
             }
-          },
-          "collectCoverage": true
+        },
+        "collectCoverage": true
     },
-
     "commitlint": {
         "extends": [
             "@commitlint/config-conventional"
         ]
     },
-
     "config": {
         "commitizen": {
             "path": "node_modules/cz-conventional-changelog"
         }
     },
-
     "devDependencies": {
         "@commitlint/cli": "^8.1.0",
         "@commitlint/config-conventional": "^8.1.0",
@@ -72,6 +68,7 @@
         "husky": "^3.0.4",
         "jest": "^24.9.0",
         "ts-jest": "^24.0.2",
+        "ts-node": "^8.3.0",
         "typescript": "^3.6.2"
     }
 }
