@@ -205,27 +205,3 @@ export class BinaryTree {
     }
 
 }
-
-let data = [8, 3, 6, 4, 9, 11, 2, 5, 7];
-let bitree = new BinaryTree(data);
-var root = bitree.show()
-console.log(JSON.stringify(root))
-console.log('inorder...');
-var result = new Array < number > ();
-console.log('inorder...');
-bitree.inOrderTraverse((data) => {
-    result.push(data);
-})
-console.log(result);
-console.log('preorder...');
-result = []
-bitree.preOrderTraverse((data) => {
-    result.push(data);
-})
-console.log(result);
-result = []
-console.log('postorder...');
-bitree.postOrderTraverse((data) => {
-    result.push(data);
-})
-console.log(result);

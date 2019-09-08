@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "build": "tsc --module commonjs",
-        "test": "jest"
+        "test": "jest",
+        "coverage": "open ./coverage/lcov-report/index.html"
     },
     "repository": {
         "type": "git",
@@ -22,13 +23,10 @@
     },
     "homepage": "https://github.com/sucaizi/ts-algo#readme",
     "jest": {
-        "roots": [
-            "<rootDir>/src"
-        ],
         "transform": {
-            ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+          ".(ts|tsx)": "ts-jest"
         },
-        "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+        "testRegex": "(/__test__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
         "moduleFileExtensions": [
             "ts",
             "tsx",
